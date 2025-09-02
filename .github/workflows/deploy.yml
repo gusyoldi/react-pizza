@@ -25,8 +25,9 @@ jobs:
       - run: pnpm install
       - run: pnpm run build
 
-      - name: Create 404.html for GitHub Pages
-        run: echo '<!DOCTYPE html><html><head><meta http-equiv="refresh" content="0; URL=./index.html"><title>Redirecting...</title></head><body><p>Redirecting to <a href="./index.html">home page</a>...</p></body></html>' > ./dist/404.html
+      - name: Create 404.html
+        run: |
+          echo '<!DOCTYPE html><html><head><meta http-equiv="refresh" content="0; URL=./index.html"><title>Redirecting...</title></head><body><p>Redirecting to <a href="./index.html">home page</a>...</p></body></html>' > ./dist/404.html
 
       - uses: peaceiris/actions-gh-pages@v4
         with:
