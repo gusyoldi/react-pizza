@@ -1,5 +1,15 @@
-function CartItem({ item }) {
-  const { pizzaId, name, quantity, totalPrice } = item;
+import { formatCurrency } from '../../utils/helpers';
+
+interface CartItemProps {
+  item: {
+    name: string;
+    quantity: number;
+    totalPrice: number;
+  };
+}
+
+function CartItem({ item }: CartItemProps) {
+  const { name, quantity, totalPrice } = item;
 
   return (
     <li>

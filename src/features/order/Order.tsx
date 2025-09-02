@@ -1,26 +1,19 @@
 // Test ID: IIDSAT
 
-import { useLoaderData } from "react-router-dom";
-import { getOrder } from "../../services/apiRestaurant";
-import { OrderType } from "../../types/order";
+import { useLoaderData } from 'react-router-dom';
+
+import { OrderType } from '../../types/order';
 import {
   calcMinutesLeft,
   formatCurrency,
   formatDate,
-} from "../../utils/helpers";
+} from '../../utils/helpers';
 
 function Order() {
   const order = useLoaderData() as OrderType;
 
-  const {
-    id,
-    status,
-    priority,
-    priorityPrice,
-    orderPrice,
-    estimatedDelivery,
-    cart,
-  } = order;
+  const { status, priority, priorityPrice, orderPrice, estimatedDelivery } =
+    order;
   const deliveryIn = calcMinutesLeft(estimatedDelivery);
 
   return (
@@ -38,7 +31,7 @@ function Order() {
         <p>
           {deliveryIn >= 0
             ? `Only ${calcMinutesLeft(estimatedDelivery)} minutes left 😃`
-            : "Order should have arrived"}
+            : 'Order should have arrived'}
         </p>
         <p>(Estimated delivery: {formatDate(estimatedDelivery)})</p>
       </div>
@@ -50,11 +43,6 @@ function Order() {
       </div>
     </div>
   );
-}
-
-export async function loader({ params }) {
-  const order = await getOrder(params.orderId);
-  return order;
 }
 
 export default Order;

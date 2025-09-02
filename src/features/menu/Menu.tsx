@@ -1,9 +1,9 @@
 import { useLoaderData } from 'react-router-dom';
-import { getMenu } from '../../services/apiRestaurant';
+import { PizzaType } from '../../types/pizza';
 import MenuItem from './MenuItem';
 
 function Menu() {
-  const menu = useLoaderData();
+  const menu = useLoaderData() as PizzaType[];
   return (
     <>
       <h1>Menu</h1>
@@ -15,11 +15,6 @@ function Menu() {
       </ul>
     </>
   );
-}
-
-export async function loader() {
-  const menu = await getMenu();
-  return menu;
 }
 
 export default Menu;

@@ -3,7 +3,7 @@ import { useState } from 'react';
 function CreateUser() {
   const [username, setUsername] = useState('');
 
-  function handleSubmit(e) {
+  function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
   }
 

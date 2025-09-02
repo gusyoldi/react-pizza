@@ -1,6 +1,16 @@
-import { formatCurrency } from "../../utils/helpers";
+import { formatCurrency } from '../../utils/helpers';
 
-function OrderItem({ item, isLoadingIngredients, ingredients }) {
+interface OrderItemProps {
+  item: {
+    quantity: number;
+    name: string;
+    totalPrice: number;
+  };
+  isLoadingIngredients: boolean;
+  ingredients?: string[];
+}
+
+function OrderItem({ item }: OrderItemProps) {
   const { quantity, name, totalPrice } = item;
 
   return (
