@@ -1,4 +1,4 @@
-import { CartType } from "./cart";
+import { CartType } from './cart';
 
 export type OrderType = {
   id: string;
@@ -6,7 +6,7 @@ export type OrderType = {
   phone: string;
   address: string;
   priority: boolean;
-  status: "preparing" | "on the way" | "delivered";
+  status: 'preparing' | 'on the way' | 'delivered';
   estimatedDelivery: string;
   cart: CartType[];
   position: string;
@@ -14,7 +14,7 @@ export type OrderType = {
   priorityPrice: number;
 };
 
-export type OrderFormData = {
+export type OrderFormDataType = {
   customer: string;
   phone: string;
   address: string;
