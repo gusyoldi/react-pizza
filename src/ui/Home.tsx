@@ -1,6 +1,6 @@
 import CreateUser from '../features/user/CreateUser';
 
-function Home() {
+const Home = () => {
   return (
     <div className="my-10 px-4 text-center sm:my-16">
       <h1 className="mb-8 text-xl font-semibold text-stone-700 md:text-3xl">
@@ -12,6 +12,6 @@ function Home() {
       <CreateUser />
     </div>
   );
-}
+};
 
 export default Home;
