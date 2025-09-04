@@ -1,7 +1,7 @@
-import { useNavigate, useRouteError } from 'react-router-dom';
+import { useRouteError } from 'react-router-dom';
+import LinkButton from './LinkButton';
 
-function NotFound() {
-  const navigate = useNavigate();
+const NotFound = () => {
   const error = useRouteError();
 
   // Type guard
@@ -14,9 +14,9 @@ function NotFound() {
     <div>
       <h1>Algo salió mal 😢</h1>
       <p>{errorMessage}</p>
-      <button onClick={() => navigate(-1)}>&larr; Volver</button>
+      <LinkButton to="-1">&larr; Volver</LinkButton>
     </div>
   );
-}
+};
 
 export default NotFound;
