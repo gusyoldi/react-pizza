@@ -2,10 +2,8 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Cart from './features/cart/Cart';
 import Menu from './features/menu/Menu';
 import menuLoader from './features/menu/menuLoader';
-import {
-  default as CreateOrder,
-  default as createOrderAction,
-} from './features/order/CreateOrder';
+import CreateOrder from './features/order/CreateOrder';
+import createOrderAction from './features/order/createOrderAction';
 import Order from './features/order/Order';
 import orderLoader from './features/order/orderLoader';
 import AppLayout from './ui/AppLayout';
