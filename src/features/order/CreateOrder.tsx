@@ -1,4 +1,5 @@
 import { Form, useActionData, useNavigation } from 'react-router-dom';
+import { useAppSelector } from '../../store/hooks';
 import { CartType } from '../../types/cart';
 import Button from '../../ui/Button';
 
@@ -30,12 +31,13 @@ export type FormErrors = {
   phone?: string;
 };
 
-function CreateOrder() {
+const CreateOrder = () => {
   // const [withPriority, setWithPriority] = useState(false);
   const cart = fakeCart;
   const navigation = useNavigation();
   const isSubmitting = navigation.state === 'submitting';
   const formErrors = useActionData() as FormErrors;
+  const username = useAppSelector((state) => state.user.username);
 
   return (
     <div className="px-4 py-6">
@@ -44,7 +46,13 @@ function CreateOrder() {
       <Form method="POST">
         <div className="mb-5 flex flex-col gap-2 sm:flex-row sm:items-center">
           <label className="sm:basis-24">Nombre</label>
-          <input type="text" name="customer" required className="input grow" />
+          <input
+            type="text"
+            name="customer"
+            defaultValue={username}
+            required
+            className="input grow"
+          />
         </div>
 
         <div className="mb-5 flex flex-col gap-2 sm:flex-row sm:items-center">
@@ -94,6 +102,6 @@ function CreateOrder() {
       </Form>
     </div>
   );
-}
+};
 
 export default CreateOrder;

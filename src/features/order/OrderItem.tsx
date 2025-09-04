@@ -5,7 +5,7 @@ interface OrderItemProps {
   item: CartType;
 }
 
-function OrderItem({ item }: OrderItemProps) {
+const OrderItem = ({ item }: OrderItemProps) => {
   const { quantity, name, totalPrice } = item;
 
   return (
@@ -18,6 +18,6 @@ function OrderItem({ item }: OrderItemProps) {
       </div>
     </li>
   );
-}
+};
 
 export default OrderItem;
