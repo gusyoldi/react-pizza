@@ -1,14 +1,14 @@
 import { useLoaderData } from 'react-router-dom';
-import { PizzaType } from '../../types/pizza';
+import { MenuType } from '../../types/menu';
 import MenuItem from './MenuItem';
 
 function Menu() {
-  const menu = useLoaderData() as PizzaType[];
+  const menu = useLoaderData() as MenuType[];
   return (
     <>
       <h1>Menu</h1>
 
-      <ul>
+      <ul className="divide-y divide-stone-200 px-2">
         {menu.map((pizza) => (
           <MenuItem key={pizza.id} pizza={pizza} />
         ))}
