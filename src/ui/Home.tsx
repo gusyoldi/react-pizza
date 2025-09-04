@@ -6,7 +6,7 @@ const Home = () => {
       <h1 className="mb-8 text-xl font-semibold text-stone-700 md:text-3xl">
         La mejor pizza.
         <br />
-        <span className="text-yellow-500">Directo del horno, a tu mesa.</span>
+        <span className="text-yellow-500">Recién hecha, directo a tu mesa</span>
       </h1>
 
       <CreateUser />

@@ -10,34 +10,31 @@ import AppLayout from './ui/AppLayout';
 import Home from './ui/Home';
 import NotFound from './ui/NotFound';
 
-const router = createBrowserRouter(
-  [
-    {
-      element: <AppLayout />,
-      errorElement: <NotFound />,
-      children: [
-        {
-          path: '/',
-          element: <Home />,
-        },
-        {
-          path: '/menu',
-          element: <Menu />,
-          loader: menuLoader,
-          errorElement: <NotFound />,
-        },
-        { path: '/cart', element: <Cart /> },
-        {
-          path: '/order/new',
-          element: <CreateOrder />,
-          action: createOrderAction,
-        },
-        { path: '/order/:orderId', element: <Order />, loader: orderLoader },
-      ],
-    },
-  ],
-  { basename: '/react-pizza' },
-);
+const router = createBrowserRouter([
+  {
+    element: <AppLayout />,
+    errorElement: <NotFound />,
+    children: [
+      {
+        path: '/',
+        element: <Home />,
+      },
+      {
+        path: '/menu',
+        element: <Menu />,
+        loader: menuLoader,
+        errorElement: <NotFound />,
+      },
+      { path: '/cart', element: <Cart /> },
+      {
+        path: '/order/new',
+        element: <CreateOrder />,
+        action: createOrderAction,
+      },
+      { path: '/order/:orderId', element: <Order />, loader: orderLoader },
+    ],
+  },
+]);
 
 function App() {
   return <RouterProvider router={router} />;
