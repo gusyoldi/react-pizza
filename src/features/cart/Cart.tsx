@@ -1,35 +1,17 @@
-import { useAppSelector } from '../../store/hooks';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import Button from '../../ui/Button';
 import LinkButton from '../../ui/LinkButton';
+import { getUsername } from '../user/userSlice';
 import CartItem from './CartItem';
-
-const fakeCart = [
-  {
-    pizzaId: 12,
-    name: 'Mediterranean',
-    quantity: 2,
-    unitPrice: 16,
-    totalPrice: 32,
-  },
-  {
-    pizzaId: 6,
-    name: 'Vegetale',
-    quantity: 1,
-    unitPrice: 13,
-    totalPrice: 13,
-  },
-  {
-    pizzaId: 11,
-    name: 'Spinach and Mushroom',
-    quantity: 1,
-    unitPrice: 15,
-    totalPrice: 15,
-  },
-];
+import { clearCart, getCart } from './cartSlice';
+import EmptyCart from './EmptyCart';
 
 const Cart = () => {
-  const cart = fakeCart;
-  const username = useAppSelector((state) => state.user.username);
+  const cart = useAppSelector(getCart);
+  const username = useAppSelector(getUsername);
+  const dispatch = useAppDispatch();
+
+  if (!cart.length) return <EmptyCart />;
 
   return (
     <div className="px-4 py-3">
@@ -47,7 +29,9 @@ const Cart = () => {
         <Button type="primary" to="/order/new">
           Pedir
         </Button>
-        <Button type="secondary">Limpiar carrito</Button>
+        <Button onClick={() => dispatch(clearCart())} type="secondary">
+          Limpiar carrito
+        </Button>
       </div>
     </div>
   );
