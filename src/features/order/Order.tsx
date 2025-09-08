@@ -26,8 +26,6 @@ function Order() {
 
   const deliveryIn = calcMinutesLeft(estimatedDelivery);
 
-  const dolarHoy = 1370;
-
   return (
     <div className="space-y-8 px-4 py-6">
       <div className="flex flex-wrap items-center justify-between gap-2">
@@ -64,16 +62,15 @@ function Order() {
 
       <div className="space-y-2 bg-stone-200 px-6 py-5">
         <p className="text-sm font-medium text-stone-600">
-          Precio de las pizzas: {formatCurrency(orderPrice * dolarHoy)}
+          Precio de las pizzas: {formatCurrency(orderPrice)}
         </p>
         {priority && (
           <p className="text-sm font-medium text-stone-600">
-            Costo por prioridad: {formatCurrency(priorityPrice * dolarHoy)}
+            Costo por prioridad: {formatCurrency(priorityPrice)}
           </p>
         )}
         <p className="font-bold">
-          Total a pagar:{' '}
-          {formatCurrency((orderPrice + priorityPrice) * dolarHoy)}
+          Total a pagar: {formatCurrency(orderPrice + priorityPrice)}
         </p>
       </div>
     </div>
