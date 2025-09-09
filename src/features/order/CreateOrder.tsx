@@ -13,8 +13,7 @@ export type FormErrors = {
 
 const CreateOrder = () => {
   const [withPriority, setWithPriority] = useState(false);
-  const navigation = useNavigation();
-  const isSubmitting = navigation.state === 'submitting';
+
   const formErrors = useActionData() as FormErrors;
   const {
     username,
@@ -23,15 +22,16 @@ const CreateOrder = () => {
     address,
     error: errorAddress,
   } = useAppSelector((state) => state.userStore);
+  const navigation = useNavigation();
   const isLoadingAddress = addressStatus === 'loading';
+  const isSubmitting = navigation.state === 'submitting';
+  const isAdressError = addressStatus === 'error';
+  const isPhoneError = formErrors?.phone;
   const cart = useAppSelector(getCart);
   const totalCartPrice = useAppSelector(getTotalCartPrice);
   const priorityPrice = withPriority ? totalCartPrice * 0.21 : 0;
   const totalPrice = totalCartPrice + priorityPrice;
   const dispatch = useAppDispatch();
-
-  const isAdressError = addressStatus === 'error';
-  const isPhoneError = formErrors?.phone;
 
   if (!cart.length) return <EmptyCart />;
 
@@ -52,7 +52,11 @@ const CreateOrder = () => {
         </div>
 
         <div className="mb-5 flex flex-col gap-2 sm:flex-row sm:items-center">
-          <label className="sm:basis-24">Teléfono</label>
+          <label
+            className={`sm:basis-24 ${isAdressError ? 'sm:self-start sm:pt-2' : ''} `}
+          >
+            Teléfono
+          </label>
           <div className="grow">
             <input type="tel" name="phone" required className="input w-full" />
             {isPhoneError && (
@@ -64,7 +68,11 @@ const CreateOrder = () => {
         </div>
 
         <div className={`mb-5 flex flex-col gap-2 sm:flex-row sm:items-center`}>
-          <label className="sm:basis-24">Dirección</label>
+          <label
+            className={`sm:basis-24 ${isAdressError ? 'sm:self-start sm:pt-2' : ''}`}
+          >
+            Dirección
+          </label>
           <div className="grow">
             <div className="relative">
               <input
