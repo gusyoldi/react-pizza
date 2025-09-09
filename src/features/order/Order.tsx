@@ -12,6 +12,7 @@ import {
   translateStatus,
 } from '../../utils/helpers';
 import OrderItem from './OrderItem';
+import UpdateOrder from './UpdateOrder';
 
 function Order() {
   const order = useLoaderData() as OrderType;
@@ -88,6 +89,7 @@ function Order() {
           Total a pagar: {formatCurrency(orderPrice + priorityPrice)}
         </p>
       </div>
+      {!priority && <UpdateOrder />}
     </div>
   );
 }
