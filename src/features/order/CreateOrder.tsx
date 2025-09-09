@@ -30,6 +30,9 @@ const CreateOrder = () => {
   const totalPrice = totalCartPrice + priorityPrice;
   const dispatch = useAppDispatch();
 
+  const isAdressError = addressStatus === 'error';
+  const isPhoneError = formErrors?.phone;
+
   if (!cart.length) return <EmptyCart />;
 
   return (
@@ -52,7 +55,7 @@ const CreateOrder = () => {
           <label className="sm:basis-24">Teléfono</label>
           <div className="grow">
             <input type="tel" name="phone" required className="input w-full" />
-            {formErrors?.phone && (
+            {isPhoneError && (
               <p className="mt-2 rounded-md bg-red-100 p-2 text-xs text-red-700">
                 {formErrors.phone}
               </p>
@@ -60,38 +63,39 @@ const CreateOrder = () => {
           </div>
         </div>
 
-        <div className="relative mb-5 flex flex-col gap-2 sm:flex-row sm:items-center">
+        <div className={`mb-5 flex flex-col gap-2 sm:flex-row sm:items-center`}>
           <label className="sm:basis-24">Dirección</label>
           <div className="grow">
-            <input
-              defaultValue={address}
-              disabled={isLoadingAddress}
-              type="text"
-              name="address"
-              required
-              className="input w-full"
-            />
-            {addressStatus === 'error' && (
+            <div className="relative">
+              <input
+                defaultValue={address}
+                disabled={isLoadingAddress}
+                type="text"
+                name="address"
+                required
+                className="input w-full"
+              />
+              {!position.latitude && !position.longitude && (
+                <span className="absolute bottom-[3px] right-[3px] z-50 md:right-[5px] md:top-auto">
+                  <Button
+                    disabled={isLoadingAddress}
+                    type="small"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      dispatch(fetchAddress());
+                    }}
+                  >
+                    Get position
+                  </Button>
+                </span>
+              )}
+            </div>
+            {isAdressError && (
               <p className="mt-2 rounded-md bg-red-100 p-2 text-xs text-red-700">
                 {errorAddress}
               </p>
             )}
           </div>
-
-          {!position.latitude && !position.longitude && (
-            <span className="absolute bottom-[3px] right-[3px] z-50 md:right-[5px] md:top-auto">
-              <Button
-                disabled={isLoadingAddress}
-                type="small"
-                onClick={(e) => {
-                  e.preventDefault();
-                  dispatch(fetchAddress());
-                }}
-              >
-                Get position
-              </Button>
-            </span>
-          )}
         </div>
 
         <div className="mb-12 flex items-center gap-5">

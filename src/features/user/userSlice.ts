@@ -64,7 +64,7 @@ const userSlice = createSlice({
       .addCase(fetchAddress.rejected, (state) => {
         state.status = 'error';
         state.error =
-          'Tuvimos un problema al obtener tu dirección ,por favor rellená el campo manualmente.';
+          'Tuvimos un problema al obtener tu dirección, por favor rellená el campo manualmente.';
       }),
 });
 

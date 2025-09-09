@@ -28,7 +28,7 @@ export default async function createOrderAction({
 
   const errors: FormErrors = {};
   if (!isValidPhone(order.phone))
-    errors.phone = 'Por favor ingresa un número de teléfono válido';
+    errors.phone = 'Por favor ingresá un número de teléfono válido.';
 
   if (Object.keys(errors).length > 0) return errors;
   const newOrder = await createOrder(order);
