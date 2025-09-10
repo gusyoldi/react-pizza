@@ -93,7 +93,7 @@ const CreateOrder = () => {
                       dispatch(fetchAddress());
                     }}
                   >
-                    Get position
+                    Ubicación actual
                   </Button>
                 </span>
               )}
@@ -106,7 +106,7 @@ const CreateOrder = () => {
           </div>
         </div>
 
-        <div className="mb-12 flex items-center gap-5">
+        <div className="mb-8 flex items-center gap-5 sm:mb-12">
           <input
             className="h-6 w-6 accent-yellow-400 focus:outline-none focus:ring focus:ring-yellow-400 focus:ring-offset-2"
             type="checkbox"
