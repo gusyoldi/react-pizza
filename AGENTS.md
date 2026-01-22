@@ -140,12 +140,12 @@ Home → Menu (menuLoader) → Cart → CreateOrder (createOrderAction)
 ## 🚀 Available Scripts
 
 ```bash
-npm run dev          # Start development server
-npm run build        # Build for production
-npm run lint         # Lint TypeScript and code
-npm run preview      # Preview the build
-npm run ts-check     # Check types without emitting
-npm run prepare      # Setup Husky
+pnpm dev             # Start development server
+pnpm build           # Build for production
+pnpm lint            # Lint TypeScript and code
+pnpm preview         # Preview the build
+pnpm ts-check        # Check types without emitting
+pnpm prepare         # Setup Husky
 ```
 
 ---
